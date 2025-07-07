@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Video List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f9f9f9;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            margin-bottom: 1rem;
+        }
+        .video-item {
+            background: white;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .video-item a {
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+        .video-item a:hover {
+            text-decoration: underline;
+        }
+        .uploader {
+            color: #666;
+            margin-left: 10px;
+        }
+        .delete-link {
+            margin-left: 10px;
+            color: red;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .delete-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ user }}</h2>
+
+    <nav>
+        <a href="{{ url_for('upload') }}">Upload Video</a> |
+        <a href="{{ url_for('wallet') }}">Wallet</a> |
+        <a href="{{ url_for('redeem') }}">Redeem</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <h3>All Approved Videos</h3>
+    {% if videos %}
+        {% for v in videos %}
+            <div class="video-item">
+                <a href="{{ url_for('watch', vid=v[0]) }}">{{ v[1] }}</a>
+                <span class="uploader">(Uploader: {{ v[3] }})</span>
+                {% if v[3] == user %}
+                    <a href="{{ url_for('delete', vid=v[0]) }}" class="delete-link" onclick="return confirm('Are you sure you want to delete this video?');">Delete</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No approved videos found.</p>
+    {% endif %}
+</body>
+</html>

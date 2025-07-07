@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscription Code Submit</title>
+</head>
+<body>
+<h2>Submit Subscription Code</h2>
+<form method="POST" action="{{ url_for('submit_subscription_code') }}">
+    <label>Subscription Code:</label>
+    <input type="text" name="code" required>
+    <button type="submit">Submit</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
