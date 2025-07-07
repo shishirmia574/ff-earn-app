@@ -2,7 +2,6 @@ annotated-types==0.7.0
 anyio==4.9.0
 asyncgui==0.6.3
 asynckivy==0.6.4
-audioop-lts==0.2.1
 beautifulsoup4==4.13.4
 blinker==1.9.0
 buildozer==1.5.0
@@ -28,7 +27,6 @@ jiter==0.10.0
 Js2Py==0.74
 Kivy==2.3.1
 Kivy-Garden==0.1.5
-kivy_deps.angle==0.4.0
 kivy_deps.glew==0.3.1
 kivy_deps.sdl2==0.8.0
 kivymd @ https://github.com/kivymd/KivyMD/archive/master.zip#sha256=99934f8f77fe3dea81e34268ac55ec382348c7bc22fce7f237ab1729f94dc4ba
